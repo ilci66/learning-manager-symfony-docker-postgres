@@ -31,6 +31,10 @@ class Tasks
     #[ORM\Column(type: 'integer')]
     private $state;
 
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'tasks')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $user_id;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -104,6 +108,18 @@ class Tasks
     public function setState(int $state): self
     {
         $this->state = $state;
+
+        return $this;
+    }
+
+    public function getUserId(): ?User
+    {
+        return $this->user_id;
+    }
+
+    public function setUserId(?User $user_id): self
+    {
+        $this->user_id = $user_id;
 
         return $this;
     }

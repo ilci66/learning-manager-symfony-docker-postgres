@@ -18,9 +18,12 @@
         <nav class="flex flex-row p-4 w-full bg-red-100 mb-auto">
             <a href="/">Home</a>
             <div class="ml-auto">
-                <a href="/register">Register</a>
-                <a href="/{{app.user ? 'logout' : 'login'}}">
+                <a class="m-1" href="/tasks/create">Create Task</a>
+                <a class="m-1" href="/tasks">Tasks</a>
+                <a class="m-1" href="/register">Register</a>
+                <a class="m-1" href="/{{app.user ? 'logout' : 'login'}}">
                 {{ app.user ? 'Logout' : 'Login' }}
+                {# {{ app.user ? app.user.id }} #}
                 </a>
             </div>
         </nav>
