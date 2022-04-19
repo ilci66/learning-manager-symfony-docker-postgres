@@ -2,30 +2,30 @@
 
 namespace App\Repository;
 
-use App\Entity\Task;
+use App\Entity\Tasks;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method Task|null find($id, $lockMode = null, $lockVersion = null)
- * @method Task|null findOneBy(array $criteria, array $orderBy = null)
- * @method Task[]    findAll()
- * @method Task[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Tasks|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Tasks|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Tasks[]    findAll()
+ * @method Tasks[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class TaskRepository extends ServiceEntityRepository
+class TasksRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Task::class);
+        parent::__construct($registry, Tasks::class);
     }
 
     /**
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function add(Task $entity, bool $flush = true): void
+    public function add(Tasks $entity, bool $flush = true): void
     {
         $this->_em->persist($entity);
         if ($flush) {
@@ -37,7 +37,7 @@ class TaskRepository extends ServiceEntityRepository
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function remove(Task $entity, bool $flush = true): void
+    public function remove(Tasks $entity, bool $flush = true): void
     {
         $this->_em->remove($entity);
         if ($flush) {
@@ -46,7 +46,7 @@ class TaskRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return Task[] Returns an array of Task objects
+    //  * @return Tasks[] Returns an array of Tasks objects
     //  */
     /*
     public function findByExampleField($value)
@@ -63,7 +63,7 @@ class TaskRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Task
+    public function findOneBySomeField($value): ?Tasks
     {
         return $this->createQueryBuilder('t')
             ->andWhere('t.exampleField = :val')

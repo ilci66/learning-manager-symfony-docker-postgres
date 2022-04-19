@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\TaskRepository;
+use App\Repository\TasksRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: TaskRepository::class)]
-class Task
+#[ORM\Entity(repositoryClass: TasksRepository::class)]
+class Tasks
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -16,7 +16,7 @@ class Task
     #[ORM\Column(type: 'string', length: 255)]
     private $name;
 
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: 'integer', nullable: true)]
     private $difficulty;
 
     #[ORM\Column(type: 'integer', nullable: true)]
@@ -53,7 +53,7 @@ class Task
         return $this->difficulty;
     }
 
-    public function setDifficulty(int $difficulty): self
+    public function setDifficulty(?int $difficulty): self
     {
         $this->difficulty = $difficulty;
 
