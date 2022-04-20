@@ -3,9 +3,17 @@
 {% block title %}Hello TasksController!{% endblock %}
 
 {% block body %}
-
-
-<div class="">
+<div class="text-4xl mt-10 border-b border-green-500">
     Create a task 
 </div>
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button    
+        type="submit"
+        class="uppercase w-full my-10 bg-blue-500 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl">
+        Submit Post
+    </button>
+{{ form_end(form) }}
+
+
 {% endblock %}
