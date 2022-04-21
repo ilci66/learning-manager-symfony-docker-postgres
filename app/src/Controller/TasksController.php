@@ -81,7 +81,7 @@ class TasksController extends AbstractController
             'form' => $form->createView()
         ]);
     }
-    #[Route('/tasks/delete/{id}', name: 'app_delete_taks')]
+    #[Route('/tasks/delete/{id}', name: 'app_delete_task')]
     public function delete($id,Request $request): Response
     {
         $task = $this->taskRepository->find($id);
@@ -90,5 +90,28 @@ class TasksController extends AbstractController
 
         return $this->redirectToRoute('app_tasks');
         // dd($task);
+    }
+
+    #[Route('/tasks/edit/{id}', name: 'app_edit_task')]
+    public function edit($id,Request $request): Response
+    {
+        $task = $this->taskRepository->find($id);
+        // $this->checkLoggedInUser($id);
+        // dd($task);
+        $securityUser = $this->security->getUser();
+
+
+        
+        $form = $this->createForm(TaskFormType::class, $task);
+        
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()){
+            dd($form);
+        }
+        
+        return $this->render('tasks/edit.html.twig', [
+            'task' => $task,
+            'form' => $form->createView()
+        ]);
     }
 }
