@@ -39,12 +39,12 @@ class TasksController extends AbstractController
         }
         $id = $securityUser->getId();
         
-        $tasks = $this->taskRepository->findBy(['id'=> $id]);
+        $tasks = $this->taskRepository->findBy(['user_id'=>$id]);
         
-        dd($tasks);
+        // dd($tasks);
 
         return $this->render('tasks/index.html.twig', [
-            'controller_name' => 'TasksController',
+            'tasks' => '$tasks',
         ]);
     }
 
