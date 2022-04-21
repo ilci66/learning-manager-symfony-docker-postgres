@@ -1,3 +1,2 @@
 # Notes
-*   the table name appears as user_id_id, gotta fix that
-*   need to add the user id when saving a new task
+*   Colors do not appear but other tailwind properties seem to work so yeah, take a look at that
