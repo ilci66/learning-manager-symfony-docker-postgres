@@ -44,7 +44,7 @@ class TasksController extends AbstractController
         // dd($tasks);
 
         return $this->render('tasks/index.html.twig', [
-            'tasks' => '$tasks',
+            'tasks' => $tasks,
         ]);
     }
 

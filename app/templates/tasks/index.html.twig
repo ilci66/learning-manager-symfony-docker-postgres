@@ -1,11 +1,39 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello TasksController!{% endblock %}
+{% block title %}Tasks{% endblock %}
 
 {% block body %}
 
+<div class="my-4 grid gap-4 lg:grid-cols-6 sm:grid-cols-3">
+{% for task in tasks %}
+    <div class="p-4 rounded-lg border task-card 
+    {{ task.difficulty == 1 ? 'bg-green' : task.difficulty == 2 ? 'bg-yellow' : task.difficulty == 3 ? 'bg-yellow' : 'bg-orange-200'  }}">
+        <p class="text-4xl mb-4 text-green text-center">
+            {{ task.name }}
+        </p>
+        <p class="text-center">
+            <span class="text-xs">
+                Difficulty Level:
+            </span> 
+            {{ task.difficulty }}
+        </p>
+        <p class="text-center">
+            {{ task.timeToLearn }} Hours
+        </p>
+        <p class="text-center">
+            {{ task.state == 1 ? "Not Started" : task.state == 2 ? "In Progress" : "Done" }}
+        </p>
+        <p class="text-center">
+            {{ task.priority == 1 ? "Take your time" : task.priority == 2 ? "It might be good to know" : task.priority == 3 ? "You should take a look at it" : "Learn it right now" }}
+        </p>
+        <p class="mt-4 text-center text-xl">
+            {{ task.notes}}
+        </p>
 
-<div class="">
+    </div>
+{% endfor %}
+</div>
+<div class="bg">
     tasks create will appear in a grid layoutas small boxes, different colors for different stages
 </div>
 {% endblock %}
