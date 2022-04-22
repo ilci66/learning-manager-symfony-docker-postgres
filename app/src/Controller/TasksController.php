@@ -100,15 +100,24 @@ class TasksController extends AbstractController
         // dd($task);
         $securityUser = $this->security->getUser();
 
+        if(!$securityUser) {
+            return $this->redirectToRoute('app_login');
+        }
 
         
         $form = $this->createForm(TaskFormType::class, $task);
         
         $form->handleRequest($request);
+
+
+
         if ($form->isSubmitted() && $form->isValid()){
-            dd($form);
+            
+            $formData = $form->getData();
+            $this->em->flush();
+            // dd($formData);
+            return $this->redirectToRoute('app_tasks');
         }
-        
         return $this->render('tasks/edit.html.twig', [
             'task' => $task,
             'form' => $form->createView()

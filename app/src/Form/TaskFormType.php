@@ -85,9 +85,9 @@ class TaskFormType extends AbstractType
                     'Done' => 3,
                 ]
             ])
-            ->add('user_id', HiddenType::class, [
-                'label' => false,
-            ])
+            // ->add('user_id', HiddenType::class, [
+            //     'label' => false,
+            // ])
         ;
     }
 
